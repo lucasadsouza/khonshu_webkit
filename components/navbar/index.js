@@ -25,6 +25,10 @@ khonshu_navbar.innerHTML = /*html*/ `
     padding: 2px 20px;
   }
 
+  nav[bg=main] {
+    background-color: var(--main-color);
+  }
+
   #logo-container {
     display: flex;
     flex-direction: row;
@@ -155,7 +159,7 @@ class KhonshuNavbar extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['position', 'img-logo'];
+    return ['position', 'img-logo', 'bg'];
   }
 
   get nav() {
@@ -170,6 +174,10 @@ class KhonshuNavbar extends HTMLElement {
 
         case 'img-logo':
           this.nav.setAttribute('img-logo', newVal);
+          break;
+
+        case 'bg':
+          this.nav.setAttribute('bg', newVal);
           break;
     }
   }
