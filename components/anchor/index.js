@@ -45,6 +45,14 @@ khonshu_anchor.innerHTML = /*html*/ `
       background-color: var(--main-color);
     }
 
+    a[bg=white] {
+      background-color: var(--white);
+    }
+
+    a[bg=black] {
+      background-color: var(--black);
+    }
+
     a[bg=success] {
       background-color: var(--success);
     }
@@ -140,6 +148,11 @@ khonshu_anchor.innerHTML = /*html*/ `
     a[fill=icon] {
       padding: 3px 7px 7px 7px;
       border-radius: 5px;
+    }
+
+    a[fill=round] {
+      padding: 5px 10px;
+      border-radius: 15px;
     }
 
     a[fill=img-tag] {
