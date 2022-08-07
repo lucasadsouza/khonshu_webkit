@@ -18,6 +18,11 @@ khonshu_navbar.innerHTML = /*html*/ `
     z-index: 5;
     position: fixed;
     top: 0;
+    width: calc(100vw - 40px);
+  }
+
+  nav[img-logo=true] {
+    padding: 2px 20px;
   }
 
   #logo-container {
@@ -63,7 +68,7 @@ khonshu_navbar.innerHTML = /*html*/ `
   }
 
   ::slotted(img) {
-    width: 40px;
+    width: 60px;
     aspect-radio: 1 / 1;
     padding: 0 6px;
     border-radius: 50%;
@@ -72,6 +77,14 @@ khonshu_navbar.innerHTML = /*html*/ `
   @media (max-width: 767px) {
     nav {
       padding: 8px 10px;
+    }
+
+    nav[position=fixed] {
+      width: calc(100vw - 20px);
+    }
+
+    nav[img-logo=true] {
+      padding: 2px 10px;
     }
 
     #logo-anchor {
@@ -96,6 +109,14 @@ khonshu_navbar.innerHTML = /*html*/ `
   @media (max-width: 767px) {
     nav {
       padding: 8px 0;
+    }
+
+    nav[position=fixed] {
+      width: 100vw;
+    }
+
+    nav[img-logo=true] {
+      padding: 2px 0;
     }
   }
 </style>
@@ -134,7 +155,7 @@ class KhonshuNavbar extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['position'];
+    return ['position', 'img-logo'];
   }
 
   get nav() {
@@ -146,6 +167,10 @@ class KhonshuNavbar extends HTMLElement {
       case 'position':
         this.nav.setAttribute('position', newVal);
         break;
+
+        case 'img-logo':
+          this.nav.setAttribute('img-logo', newVal);
+          break;
     }
   }
 }
