@@ -2,6 +2,8 @@
 
 Khonshu WebKit is a collection of classes and web components to create a full website with great reusability.
 
+It is made with JS Vanilla, HTML and CSS.
+
 ---
 \
 It contains:
