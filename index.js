@@ -1,7 +1,8 @@
 class View {
-  constructor(title, view_file) {
+  constructor(title, view_file, view_css=undefined) {
     this.title = title;
     this.view_file = view_file;
+    this.view_css = view_css;
   }
 
   setTitle() {
@@ -12,6 +13,15 @@ class View {
     let view_html = await (await fetch(this.view_file)).text();
     return view_html;
   }
+
+  async getCSS() {
+    let view_css = '';
+    if (this.view_css) {
+      view_css = await (await fetch(this.view_css)).text();
+    }
+
+    return view_css;
+  }
 }
 
 
@@ -21,6 +31,7 @@ class Navigation {
   }
 
   async router() {
+    console.log(this.routes);
     const potentialMatches = this.routes.map(route => {
       return {
         route: route,
@@ -41,8 +52,7 @@ class Navigation {
     }
 
     match.route.view.setTitle();
-    document.querySelector('#khonshu-view').innerHTML = await match.route.view.getHTML();
-
+    document.querySelector('#khonshu-view').innerHTML = await match.route.view.getCSS() + await match.route.view.getHTML();
     await match.route.actions.map(async (action) => await action());
   }
 
