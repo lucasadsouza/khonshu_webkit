@@ -55,6 +55,10 @@ khonshu_navbar.innerHTML = /*html*/ `
     transition: all 0.3s ease;
   }
 
+  #main-buttons[fix-line] {
+    margin-top: 6px;
+  }
+
   #main-buttons, #other-buttons {
     display: flex;
     flex-direction: row;
@@ -159,7 +163,7 @@ class KhonshuNavbar extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['position', 'img-logo', 'bg'];
+    return ['position', 'img-logo', 'bg', 'fix-line'];
   }
 
   get nav() {
@@ -178,6 +182,10 @@ class KhonshuNavbar extends HTMLElement {
 
         case 'bg':
           this.nav.setAttribute('bg', newVal);
+          break;
+
+        case 'fix-line':
+          this.nav.querySelector('#main-buttons').setAttribute('fix-line', newVal);
           break;
     }
   }
